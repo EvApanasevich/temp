@@ -1,26 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import Rating, {RatingValueType} from "./Components/Rating/Rating";
+import {Accordion} from "./Components/Accordion/Accordion";
+import {OnOff} from "./Components/OnOff/onOff";
+import {UncontrolledAccordion} from "./Components/UncontrolledAccordion/UncontrolledAccordion";
+import {UncontrolledRating} from "./Components/UncontrolledRating/UncontrolledRating";
+import {UncontrolledOnOff} from "./Components/UncontrolledOnOff/UncontrolledOnOff";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export function App() {
+    const [value, setValue] = useState<RatingValueType>(0)
+    const [collapsed, setCollapsed] = useState(true)
+    const [on, setOn] = useState(false)
+
+    return (
+        <div>
+            <OnOff />
+            <UncontrolledOnOff onClick={setOn} on={on}/>
+
+            <PageTitle title={"This is APP component"}/>
+            <PageTitle title={"My friends"}/>
+
+            Article 1
+
+            <Rating onClick={setValue} value={value}/>
+
+            <UncontrolledAccordion titleValue={"Menu"} />
+            <Accordion titleValue={'Users'} collapsed={collapsed} onClick={() => setCollapsed(!collapsed)}/>
+            Article 2
+
+            <UncontrolledRating/>
+        </div>
+    );
+};
+
+type PageTitlePropsType = {
+    title: string
 }
 
-export default App;
+function PageTitle(props: PageTitlePropsType) {
+    return (
+        <h1>{props.title}</h1>
+    );
+}
+
+
