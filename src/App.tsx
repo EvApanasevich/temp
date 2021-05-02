@@ -16,16 +16,16 @@ export function App() {
     return (
         <div>
             <UncontrolledOnOff />
-            <OnOff onClick={setOn} on={on}/>
+            <OnOff onClick={setOn} on={on} />
 
-            <PageTitle title={"This is APP component"}/>
-            <PageTitle title={"My friends"}/>
+            <PageTitle title={"This is APP component"} />
+            <PageTitle title={"My friends"} />
 
-            <Rating onClick={setValue} value={value}/>
+            <Rating onClick={setValue} value={value} />
             <UncontrolledRating/>
 
             <UncontrolledAccordion titleValue={"Menu"} />
-            <Accordion titleValue={'Users'} collapsed={collapsed} onClick={() => setCollapsed(!collapsed)}/>
+            <Accordion titleValue={'Users'} collapsed={collapsed} onClick={() => setCollapsed(!collapsed)} />
 
         </div>
     );
